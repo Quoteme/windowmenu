@@ -5,13 +5,12 @@ DESTDIR=/usr/local
 PREFIX=/bin
 
 windowmenu: main.c
-	$(CC) -o $@ main.c
+	$(CC) $( pkg-config --cflags gtk4 ) -o $@ main.c $( pkg-config --libs gtk4 )
 
 .PHONY: clean install
 
 install: windowmenu
 	mkdir -p $(DESTDIR)$(PREFIX)
-	ls
 	install -m 755 windowmenu $(DESTDIR)$(PREFIX)
 
 uninstall:
