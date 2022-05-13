@@ -50,6 +50,7 @@
             ];
             buildPhase = ''
               NIX_CFLAGS_COMPILE="$(pkg-config --cflags gtk4) $NIX_CFLAGS_COMPILE"
+              make
             '';
             makeFlags = [
               "DESTDIR=$(out)"

@@ -1,11 +1,12 @@
 CC=gcc
 CFLAGS=-I.
 LDIR =./lib
+LDLIBS = $(shell pkg-config --libs gtk+-3.0)
 DESTDIR=/usr/local
 PREFIX=/bin
 
 windowmenu: main.c
-	$(CC) $( pkg-config --cflags gtk4 ) -o $@ main.c $( pkg-config --libs gtk4 )
+	$(CC) -o $@ main.c `pkg-config --cflags --libs gtk4`
 
 .PHONY: clean install
 
